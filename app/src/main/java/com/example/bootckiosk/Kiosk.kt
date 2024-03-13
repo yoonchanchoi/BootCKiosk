@@ -1,5 +1,7 @@
 package com.example.bootckiosk
 
+import java.lang.NumberFormatException
+
 fun main(){
     Kiosk().run()
 }
@@ -33,6 +35,8 @@ class Kiosk {
                     val categorys =
                         all.filter { it.category == "Burger" } as ArrayList<ShakeshackMenu>
                     categoryMenu(title, categorys)
+                    categorys.clear()
+
                 }
 
                 "2" -> {
@@ -40,6 +44,7 @@ class Kiosk {
                     val categorys =
                         all.filter { it.category == "Drink" } as ArrayList<ShakeshackMenu>
                     categoryMenu(title, categorys)
+                    categorys.clear()
                 }
 
                 "3" -> {
@@ -47,7 +52,7 @@ class Kiosk {
                     val categorys =
                         all.filter { it.category == "ForzenCustard" } as ArrayList<ShakeshackMenu>
                     categoryMenu(title, categorys)
-
+                    categorys.clear()
                 }
 
                 "4" -> {
@@ -55,9 +60,13 @@ class Kiosk {
                     val categorys =
                         all.filter { it.category == "Chicken" } as ArrayList<ShakeshackMenu>
                     categoryMenu(title, categorys)
+                    categorys.clear()
                 }
 
-                else -> println("다시 입력해주세용")
+                else -> {
+                    println("다시 입력해주세용")
+                    println()
+                }
 
             }
         }
@@ -66,6 +75,7 @@ class Kiosk {
     fun categoryMenu(title: String, categoryMenus: ArrayList<ShakeshackMenu>) {
 
         var input = ""
+        var select = -1
 //        var flag =-1
         while (true) {
 
@@ -75,7 +85,15 @@ class Kiosk {
             }
             println("0. 뒤로가기 | 뒤로가기")
             input = readln()
-            val select = input.toInt()
+
+            try {
+                 select = input.toInt()
+
+            }catch (e: NumberFormatException){
+                println("다시 입력해주세용")
+                println()
+                continue
+            }
             if (select == 0) {
 //                flag = 1
                 return
@@ -84,6 +102,7 @@ class Kiosk {
 //                flag = 1
             } else {
                 println("다시 입력해주세용")
+                println()
                 continue
             }
         }
@@ -119,14 +138,14 @@ class Kiosk {
             Drink(5,"루트 비어", "청량감 있는 독특한 미국식 무알콜 탄산음료",4800,"Drink"),
         )
         val forzenCustards = arrayListOf<ShakeshackMenu>(
-            ForzenCustard(1,"쉐이크", "쫀득하고 진한 커스터드가 들어간 클래식 쉐이크(바닐라/초콜릿/스트로베리/블랙 & 화이트/솔티드 카라멜/피넛 버터/커피)",6500,"forzenCustard"),
-            ForzenCustard(2,"플로트", "부드러운 바닐라 커스터드와 톡톡 터지는 탄산이 만나 탄생한 색다른 음료(루트 비어/퍼플 카우/크림시클)",6500,"forzenCustard"),
-            ForzenCustard(3,"컵 & 콘", "매일 점포에서 신선하게 제조하는 쫀득하고 진한 아이스크림 (바닐라/초콜릿)",5400,"forzenCustard"),
+            ForzenCustard(1,"쉐이크", "쫀득하고 진한 커스터드가 들어간 클래식 쉐이크(바닐라/초콜릿/스트로베리/블랙 & 화이트/솔티드 카라멜/피넛 버터/커피)",6500,"ForzenCustard"),
+            ForzenCustard(2,"플로트", "부드러운 바닐라 커스터드와 톡톡 터지는 탄산이 만나 탄생한 색다른 음료(루트 비어/퍼플 카우/크림시클)",6500,"ForzenCustard"),
+            ForzenCustard(3,"컵 & 콘", "매일 점포에서 신선하게 제조하는 쫀득하고 진한 아이스크림 (바닐라/초콜릿)",5400,"ForzenCustard"),
         )
         val chickens = arrayListOf<ShakeshackMenu>(
-            ForzenCustard(1,"핫 치킨", "바삭하고 두툼한 치킨 통살과 스파이시 슬로, 핫 스파이시 시즈닝이 토핑된 치킨 버거 (닭가슴살/닭다리살 선택 가능)",9500,"chicken"),
-            ForzenCustard(2,"치킨쉑", "바삭하고 두툼한 치킨 통살과 양상추, 피클, 허브 마요 소스가 토핑된 치킨 버거 (닭가슴살/닭다리살 선택 가능)",8000, "chicken" ),
-            ForzenCustard(3,"치킨 바이트", "한 입에 먹기 좋은 바삭한 치킨 바이트와 허니 머스터드 또는 BBQ 소스를 선택하여 함께 즐기는 메뉴",5900 ,"chicken"),
+            ForzenCustard(1,"핫 치킨", "바삭하고 두툼한 치킨 통살과 스파이시 슬로, 핫 스파이시 시즈닝이 토핑된 치킨 버거 (닭가슴살/닭다리살 선택 가능)",9500,"Chicken"),
+            ForzenCustard(2,"치킨쉑", "바삭하고 두툼한 치킨 통살과 양상추, 피클, 허브 마요 소스가 토핑된 치킨 버거 (닭가슴살/닭다리살 선택 가능)",8000, "Chicken" ),
+            ForzenCustard(3,"치킨 바이트", "한 입에 먹기 좋은 바삭한 치킨 바이트와 허니 머스터드 또는 BBQ 소스를 선택하여 함께 즐기는 메뉴",5900 ,"Chicken"),
         )
         all.addAll(burgers)
         all.addAll(drinks)
