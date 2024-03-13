@@ -18,7 +18,9 @@ class Kiosk {
     fun run() {
         while (true) {
             val all = initData()
+            println("-------------------")
             println("[ SHAKESHACK MENU ]")
+            println("-------------------")
             menu.forEach {
                 it.display()
             }
