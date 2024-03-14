@@ -7,22 +7,16 @@ fun main(){
 }
 
 class Kiosk {
-
-    val menu = arrayListOf(
-            ShakeshackMenu(1,"Burgers", "쉐이크쉑의 시그니처 비프 패티와 쫄깃한 식감의 토종효모 포테이토 번, 토마토, 양상추에 쉑소스를 올려 만든 심플하면서도 맛있는 쉑버거와 그 외 다양한 버거 메뉴가 있습니다." , "ShackMenu"),
-            ShakeshackMenu(2,"Drinks", "매장에서 직접 만드는 상큼한 레몬에이드, 달지 않고 향긋한 아이스티, 레몬에이드와 아이스티를 반반 섞은 쉐이크쉑의 시그니처 음료 피프티/피프티도 잊지 마세요.", "ShackMenu" ),
-            ShakeshackMenu(3,"ForzenCustards", "매장에서 매일 신선하게 제조하는 쫀득하고 진한 커스터드를 드셔보세요. 입안 가득 퍼지는 부드럽고 달콤한 맛이 당신의 하루를 더욱 완벽하게 만들 것입니다." , "ShackMenu"),
-            ShakeshackMenu(4,"Chickens", "신선한 치킨 통살을 버터밀크에 수비드 하여 주문과 동시에 바삭하게 튀겼습니다.", "ShackMenu"),
-            )
-
     fun run() {
         while (true) {
             val all = initData()
             println("-------------------")
             println("[ SHAKESHACK MENU ]")
             println("-------------------")
-            menu.forEach {
-                it.display()
+            all.forEach {
+                if(it.category=="ShackMenu"){
+                    it.display()
+                }
             }
             println("0. 종료 | 프로그램 종료")
             val input = readln()
@@ -125,6 +119,15 @@ class Kiosk {
 
     private fun initData(): ArrayList<ShakeshackMenu>{
         val all = arrayListOf<ShakeshackMenu>()
+
+        val menu = arrayListOf(
+            ShakeshackMenu(1,"Burgers", "쉐이크쉑의 시그니처 비프 패티와 쫄깃한 식감의 토종효모 포테이토 번, 토마토, 양상추에 쉑소스를 올려 만든 심플하면서도 맛있는 쉑버거와 그 외 다양한 버거 메뉴가 있습니다." , "ShackMenu"),
+            ShakeshackMenu(2,"Drinks", "매장에서 직접 만드는 상큼한 레몬에이드, 달지 않고 향긋한 아이스티, 레몬에이드와 아이스티를 반반 섞은 쉐이크쉑의 시그니처 음료 피프티/피프티도 잊지 마세요.", "ShackMenu" ),
+            ShakeshackMenu(3,"ForzenCustards", "매장에서 매일 신선하게 제조하는 쫀득하고 진한 커스터드를 드셔보세요. 입안 가득 퍼지는 부드럽고 달콤한 맛이 당신의 하루를 더욱 완벽하게 만들 것입니다." , "ShackMenu"),
+            ShakeshackMenu(4,"Chickens", "신선한 치킨 통살을 버터밀크에 수비드 하여 주문과 동시에 바삭하게 튀겼습니다.", "ShackMenu"),
+        )
+
+
         val burgers = arrayListOf<ShakeshackMenu>(
             Burger(1,"쉑버거", "비프 패티와 함께 토마토, 양상추, 쉑소스가 토핑된 치즈버거", 8400 , "Burger"),
             Burger(2,"스모크쉑", "애플 우드 칩으로 훈연한 짭짤한 베이컨, 매콤한 체리 페퍼, 비프 패티와 쉑소스가 토핑된 치즈버거",10600, "Burger" ),
@@ -149,6 +152,7 @@ class Kiosk {
             ForzenCustard(2,"치킨쉑", "바삭하고 두툼한 치킨 통살과 양상추, 피클, 허브 마요 소스가 토핑된 치킨 버거 (닭가슴살/닭다리살 선택 가능)",8000, "Chicken" ),
             ForzenCustard(3,"치킨 바이트", "한 입에 먹기 좋은 바삭한 치킨 바이트와 허니 머스터드 또는 BBQ 소스를 선택하여 함께 즐기는 메뉴",5900 ,"Chicken"),
         )
+        all.addAll(menu)
         all.addAll(burgers)
         all.addAll(drinks)
         all.addAll(forzenCustards)
