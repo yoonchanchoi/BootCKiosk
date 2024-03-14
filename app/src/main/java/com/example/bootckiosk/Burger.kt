@@ -1,6 +1,6 @@
 package com.example.bootckiosk
 
-open class Burger(number:Int, name: String, explan: String, private val price: Int, category: String) :
+class Burger(number:Int, name: String, explan: String, private val price: Int, category: String) :
     ShakeshackMenu(number, name, explan, category) {
     override fun display() {
         println("${number}.$name | $price | $explan")
