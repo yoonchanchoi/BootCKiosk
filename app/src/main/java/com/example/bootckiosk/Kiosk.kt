@@ -127,7 +127,6 @@ class Kiosk {
             ShakeshackMenu(4,"Chickens", "신선한 치킨 통살을 버터밀크에 수비드 하여 주문과 동시에 바삭하게 튀겼습니다.", "ShackMenu"),
         )
 
-
         val burgers = arrayListOf<ShakeshackMenu>(
             Burger(1,"쉑버거", "비프 패티와 함께 토마토, 양상추, 쉑소스가 토핑된 치즈버거", 8400 , "Burger"),
             Burger(2,"스모크쉑", "애플 우드 칩으로 훈연한 짭짤한 베이컨, 매콤한 체리 페퍼, 비프 패티와 쉑소스가 토핑된 치즈버거",10600, "Burger" ),
